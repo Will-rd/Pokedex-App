@@ -28,11 +28,18 @@ function getPokemonData(pokemonName) {
             cardEl.setAttribute("class", "card col-md-3");
             cardEl.setAttribute("style", "width: 20rem");
             cardEl.textContent = data.name;
+            var imgThumb = document.createElement('img');
+            cardEl.appendChild(imgThumb);
+            imgThumb.setAttribute('src', data.sprites.front_default);
+
             for(var i = 0; i < data.moves.length; i++) {
                var moveNames = document.createElement('div');
                moveNames.textContent = data.moves[i].move.name;
                cardEl.appendChild(moveNames); 
             }
+
+            
+
             pokemonBox.appendChild(cardEl);
         })
 }
