@@ -24,16 +24,24 @@ function getPokemonData(pokemonName) {
             console.log(data);
             console.log(data.name);
             
-            var cardEl = document.createElement('div');
-            cardEl.setAttribute("class", "card col-md-3");
+            var cardEl = document.createElement('h1');
+            cardEl.setAttribute("class", "card col-md-3 p-3 m-3");
             cardEl.setAttribute("style", "width: 20rem");
             cardEl.textContent = data.name;
             var imgThumb = document.createElement('img');
             cardEl.appendChild(imgThumb);
             imgThumb.setAttribute('src', data.sprites.front_default);
 
+            var typeDiv = document.createElement('h4')
+            typeDiv.textContent ="Type: " + data.types[0].type.name;
+            cardEl.appendChild(typeDiv);
+
+            var moveLbl = document.createElement('h3');
+            moveLbl.textContent = "Moves: "
+            cardEl.appendChild(moveLbl);
+
             for(var i = 0; i < data.moves.length; i++) {
-               var moveNames = document.createElement('div');
+               var moveNames = document.createElement('h4');
                moveNames.textContent = data.moves[i].move.name;
                cardEl.appendChild(moveNames); 
             }
